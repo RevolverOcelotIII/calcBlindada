@@ -10,7 +10,7 @@ public class Calculadora {
         String operacao;
         double x,y;
         do{
-            System.out.println("Insira os valores e o operador:"); 
+            System.out.println("Insira a operação | Digite exit para sair:"); 
             operacao = scanf.nextLine();
             strteste = operacao.split(" ");
             try{
@@ -18,11 +18,15 @@ public class Calculadora {
                     x = Double.parseDouble(strteste[0]);
                     y = Double.parseDouble(strteste[2]);
                 }catch(NumberFormatException e){
-                    System.out.println("Comando inválido inserido\n");
+                    if (! operacao.equals("exit")){
+                        System.out.println("Comando inválido inserido\n");
+                    }
                     continue;
                 }
             }catch(ArrayIndexOutOfBoundsException e){
-                System.out.println("Comando inválido inserido\n");
+                if (! operacao.equals("exit")){
+                    System.out.println("Comando inválido inserido\n");
+                }
                 continue;
             }
                 switch(strteste[1]){
@@ -55,5 +59,6 @@ public class Calculadora {
                         break;
                 }
         }while(! operacao.equals("exit")||operacao.isEmpty());
+        System.out.println("Fim do programa.");
     }
 }
